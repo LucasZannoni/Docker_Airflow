@@ -1,0 +1,4 @@
+CREATE USER airflow PASSWORD 'airflow';
+CREATE DATABASE airflow;
+GRANT ALL ON ALL TABLES IN SCHEMA public TO airflow;
+GRANT ALL ON DATABASE airflow TO airflow;

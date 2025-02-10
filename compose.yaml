@@ -1,0 +1,14 @@
+services:
+  airflow_postgres:
+    build: ./Postgres/
+    image: postgres_airflow:1.0
+    container_name: postgres_para_airflow
+    restart: unless-stopped
+  ubuntu-postgres:
+    build: ./Ubuntu/
+    image: ubuntu_airflow:1.0
+    container_name: ubuntu_para_airflow
+    restart: unless-stopped
+    # depends_on:
+    #   airflow_postgres:
+    #     condition: service_started
