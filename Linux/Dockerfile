@@ -33,5 +33,7 @@ RUN airflow db init
 RUN airflow users create -r Admin -u admin -e admin@example.com -f admin -l user -p test
 
 COPY airflow.cfg /home/ubuntu/airflow/airflow.cfg
+COPY startup.sh /home/ubuntu/airflow/startup.sh
+COPY restart.sh /home/ubuntu/airflow/restart.sh
 
-CMD airflow db init
+ENTRYPOINT ["bash", "-c", "/home/ubuntu/airflow/restart.sh & tail -f /dev/null"]
