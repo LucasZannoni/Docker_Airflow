@@ -1,8 +1,6 @@
 services:
   db:
-    build: ./Postgres/
-    image: postgres_airflow
-    container_name: postgres_para_airflow
+    build: ./Database/
     restart: unless-stopped
     expose:
       - "5432"
@@ -14,9 +12,6 @@ services:
 
   maquina:
     build: ./Linux/
-    image: linux_airflow
-    container_name: ubuntu_para_airflow
-    restart: always
     ports:
     - "127.0.0.1:8080:8080"
     depends_on:

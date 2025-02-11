@@ -1,8 +1,0 @@
-CREATE USER airflow PASSWORD 'airflow';
-CREATE DATABASE airflow;
-ALTER DATABASE airflow OWNER TO airflow_user;
-GRANT ALL ON ALL TABLES IN SCHEMA public TO airflow;
-GRANT ALL IN SCHEMA public TO airflow;
-GRANT ALL ON DATABASE airflow TO airflow;
-GRANT ALL PRIVILEGES ON DATABASE airflow TO airflow;
-GRANT ALL PRIVILEGES ON DATABASE airflow TO postgres;
