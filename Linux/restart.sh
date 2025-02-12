@@ -1,3 +1,3 @@
 #!/bin/bash
-airflow db init
+airflow db migrate
 airflow scheduler & airflow webserver
