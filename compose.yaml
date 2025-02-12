@@ -17,3 +17,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    volumes:
+      - ./Airflow_Files/dags:/home/ubuntu/airflow/dags
+      - ./Airflow_Files/libs:/home/ubuntu/airflow/libs
+      - ./Airflow_Files/credentials:/home/ubuntu/airflow/credentials
