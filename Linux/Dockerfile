@@ -36,4 +36,6 @@ COPY airflow.cfg /home/ubuntu/airflow/airflow.cfg
 COPY startup.sh /home/ubuntu/airflow/startup.sh
 COPY restart.sh /home/ubuntu/airflow/restart.sh
 
+RUN sed -i 's/\r//g' /home/ubuntu/airflow/restart.sh
+
 ENTRYPOINT ["bash", "-c", "/home/ubuntu/airflow/restart.sh & tail -f /dev/null"]
