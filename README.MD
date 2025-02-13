@@ -7,9 +7,11 @@ Este repositório é dedicado ao deploy simplificado de uma aplicação Apache A
 - [Propósito](#propósito-deste-repositório)
 - [Airflow - Introdução](#airflow---introdução-à-ferramenta)
 - [Docker - Introdução](#docker---contêineres)
-- [Conteúdo Deste Repositório](#conteúdo-desta-repo)
+- [Conteúdo Deste Repositório](#conteúdo-deste-repositório)
 - [Conhecimentos Necessários](#conhecimentos-necessários)
 - [Instalação - Windows](#instalação---windows)
+- [Configurações Iniciais](#configurações-iniciais)
+- [Modo de Uso](#modo-de-uso)
 
 
 ## Propósito Deste Repositório
@@ -22,11 +24,15 @@ Uma dificuldade associada a esta ferramenta, porém, está relacionada ao seu se
 
 Neste sentido, o propósito desta Repo consiste em fornecer um acesso fácil à instalação desta ferramenta através do uso de containeres Docker. Com a conteinerização, o deploy desta aplicação é facilitado substancialmente, permitindo o uso e aprendizado por parte do usuário mais iniciante, que pode dedicar seu foco e energia iniciais no entendimento da própria ferramenta.
 
+
+
 ## Airflow - Introdução à Ferramenta
 
 A execução automatizada e orquestrada de tasks é essencial para garantir eficiência, escalabilidade e confiabilidade em processos de dados e workflows complexos. 
 
 Nesse contexto, o Apache Airflow se destaca como uma ferramenta poderosa para orquestração de workflows, oferecendo uma interface flexível para definir, monitorar e gerenciar pipelines de dados. Com suporte a dependências entre tasks, agendamento dinâmico e escalabilidade, o Airflow tem se tornado uma escolha popular entre usuários de dados para a orquestração de seus pipelines.
+
+
 
 ## Docker - Contêineres
 
@@ -35,6 +41,8 @@ O Docker Engine, por sua vez, se trata de uma ferramenta open source para a cont
 Um conteiner consiste no empacotamento de uma aplicação e todas as suas dependências em uma unidade padrão para reprodução. Ele auxilia na hora de padronizar o deploy de aplicativos, uma vez que roda da mesma forma independente do sistema que seja realizado o deploy, permitindo que rodemos o nosso app de maneira leve, rápida e padronizada.
 
 Esta repo pode ser considerada um bom exemplo de conteiner, onde desejamos rodar as funcionalidades básicas do Apache Airflow (Scheduler e Webserver) de maneira rápida e fácil, sem maiores preocupações com setup.
+
+
 
 ## Conteúdo Deste Repositório
 
@@ -48,9 +56,13 @@ Este repositório é composto por 3 pastas, sendo estas:
 
 4. **Images**: Pasta contendo as imagens utilizadas nesta repo. Ela não é necessária para a instalação do Apache Airflow.
 
+
+
 ## Conhecimentos Necessários
 
 É esperado que, para utilizar esta solução, o usuário possua conhecimentos básicos em **git**, **github** e **execução de comandos no prompt** do sistema operacional.
+
+
 
 ## Instalação - Windows
 
@@ -104,9 +116,63 @@ Caso veja uma tela semelhante com a figura abaixo, parabéns! Sua instalação d
 
 ![alt text](./Images/image-3.png)
 
-- **Observações**
+- **Observações:**
     - Esta build de Airflow está configurada para ser inicializada toda vez que a docker engine for desligada, caso não deseje isto, você pode executar o comando pause nos conteineres.
     - Da mesma forma, caso os mesmos não religuem de maneira automática, podem ser iniciados da mesma forma.
     - Uma dica para inicialização automática, seria configurar para que o programa Docker Desktop seja iniciado junto com o Windows. Isso fará com que seu Airflow também inicie automáticamente com a ativação de sua máquina.
 
 ![alt text](./Images/image-4.png)
+
+
+
+## Configurações Iniciais
+
+Antes de utilizar o Apache Airflow, ainda é necessário realizar as configurações iniciais, sendo elas:
+
+1.**Criação de Usuário e Senha**
+
+É necessária a criação de pelo menos um usuário, para isso, precisaremos acessar o conteiner ubuntu de nossa aplicação.
+
+Primeiramente, garanta que o seu conteiner esteja ligado e, após isso, anote o "Container ID" do aplicação de nome "maquina-1".
+
+![alt text](./Images/image-5.png)
+
+Com este valor, insira abra o CMD e execute o seguinte comando: 
+
+   ```bash
+   docker exec -it <insira_o_container_id_aqui> bash
+   ```
+
+Após isso, o texto à esquerda do seu comando deve mudar, indicando que você está agora no prompt de comando do sistema ubuntu.
+
+Agora, execute o seguinte comando para criar seu usuário e senha:
+
+   ```bash
+   airflow users create -r Admin -u <nome_de_usuário_aqui> -e admin@example.com -f admin -l user -p <senha_aqui>
+   ```
+
+Caso os passos acima sejam executados de maneira correta, você deve receber uma mensagem de confirmação da criação do usuário no prompt.
+
+## Modo de Uso
+
+Após a instalação, é necessário seguir dois passos para o uso da ferramenta.
+
+1.**Inserção de Dags, Bibliotecas e Credenciais na Pasta Local**
+
+Este deploy é pensado de modo que, uma vez instalado, o usuário não precise mais acessar o ambiente docker. Para isso, iremos inserir os arquivos necessários nas pastas já mapeadas em nosso sistema (mapeamento este que é realizado de forma automática na montagem da imagem).
+
+Foram configuradas 3 pastas de maneira default, as quais se encontram dentro da pasta "Airflow_Files", nesta Repo:
+
+- **Dags:** Nesta pasta, o usuário deverá inserir todas as DAGs a serem executadas pelo airflow, as quais irão aparecer de maneira síncrona na plataforma.
+
+- **Libs:** (Opcional): Esta pasta é de uso opcional por parte do usuário e foi pensada para que o usuário possa adicionar suas bibliotecas customizadas dentro do ambiente de instalação, para uso por parte das DAGs.
+
+- **Credentials:** (Opcional): Esta pasta é de uso opcional por parte do usuário e foi pensada para que o usuário possa adicionar suas credenciais dentro do ambiente de instalação, para uso por parte das DAGs.
+
+
+
+2.**Login na WebPage e Execução das Dags**
+
+Uma vez realizadas todas as configurações necessárias, o usuário poderá realizar o login na webpage da aplicação e observar a execução de suas DAGs. Esta webpage pode ser acessada no seguinte link.
+
+    http://localhost:8080
