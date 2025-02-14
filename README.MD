@@ -10,6 +10,7 @@ Este repositório é dedicado ao deploy simplificado de uma aplicação Apache A
 - [Conteúdo Deste Repositório](#conteúdo-deste-repositório)
 - [Conhecimentos Necessários](#conhecimentos-necessários)
 - [Instalação - Windows](#instalação---windows)
+- [Instalação - Linux](#instalação---linux)
 - [Configurações Iniciais](#configurações-iniciais)
 - [Modo de Uso](#modo-de-uso)
 
@@ -125,7 +126,7 @@ Caso veja uma tela semelhante com a figura abaixo, parabéns! Sua instalação d
 
 
 
-## Instalação - Ubuntu
+## Instalação - Linux
 
 Para a instalação no sistema operacional Windows, o usuário deve seguir os seguintes passos:
 
