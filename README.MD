@@ -91,7 +91,9 @@ Para que possamos montar imagens Docker, precisamos baixar a sua engine, que pod
       ##Confirme no prompt caso este peça alguma confirmação para a instalação.
       wsl --set-default-version 2
       ```
-      Você também pode buscar a instalação do WSL2 nos mecanismos de busca mais comuns, como o Google. Esta distribuição de Linux para o Windows é bastante utilizada por desenvolvedores e existem diversos tutoriais ensinando a sua instalação. **É importante observar que  os comandos fornecidos acima podem foram definidos no momento da publicação desta repo, os quais podem mudar à medida que ocorrem atualizações ou lançamento de novas versões para os sistemas operacionais. É sugerido que sempre se verifique os comandos descritos, de modo a confirmar que os mesmos funcionam para a sua versão de sistema operacional.**
+      Você também pode buscar a instalação do WSL2 nos mecanismos de busca mais comuns, como o Google. Esta distribuição de Linux para o Windows é bastante utilizada por desenvolvedores e existem diversos tutoriais ensinando a sua instalação. 
+      
+      **É importante observar que  os comandos fornecidos acima podem foram definidos no momento da publicação desta repo, os quais podem mudar à medida que ocorrem atualizações ou lançamento de novas versões para os sistemas operacionais. É sugerido que sempre se verifique os comandos descritos, de modo a confirmar que os mesmos funcionam para a sua versão de sistema operacional.**
 
 
 2.**Crie uma fork deste projeto para seu próprio ambiente Github.**
