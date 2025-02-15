@@ -21,7 +21,7 @@ Esta Repo tem como propósito facilitar o acesso para uso educacional à platafo
 
 Este software é muito utilizado pela comunidade de dados devido à sua facilidade para automatizar a execução de scripts python e orquestrar pipelines de dados. 
 
-Uma dificuldade associada a esta ferramenta, porém, está relacionada ao seu setup inicial. Como se trata de uma ferramenta open-source e com a instalação baseada em sistemas linux, podem ocorrer diversos problemas durante a instalação e configuração dos serviços, cuja solução não é amigável ao usuário que não possui familiaridade com sistemas linux, comandos em bash, configurações básicas e conexão com bases de dados relacionais (SQLite, Postgres, Mysql, dentre outras).
+Uma dificuldade associada a esta ferramenta, porém, está relacionada ao seu setup inicial. Como se trata de uma ferramenta open-source e com a instalação baseada em sistemas linux, podem ocorrer diversos problemas durante a instalação e configuração dos serviços, cuja solução não é amigável ao usuário que não possui familiaridade com sistemas linux, comandos em bash, configurações básicas e conexão com bases de dados relacionais (SQLite, Postgres, MySQL, dentre outras).
 
 Neste sentido, o propósito desta Repo consiste em fornecer um acesso fácil à instalação desta ferramenta através do uso de containeres Docker. Com a conteinerização, o deploy desta aplicação é facilitado substancialmente, permitindo o uso e aprendizado por parte do usuário mais iniciante, que pode dedicar seu foco e energia iniciais no entendimento da própria ferramenta.
 
@@ -73,9 +73,26 @@ Para a instalação no sistema operacional Windows, o usuário deve seguir os se
 
 Para que possamos montar imagens Docker, precisamos baixar a sua engine, que pode ser obtida neste [link](https://www.docker.com/products/docker-desktop/).
 
-- OBS: O link e layout do website podem mudar com o tempo. Garanta que está baixando a distribuição do Docker do website oficial da empresa.
+- OBS: 
+   - O link e layout do website podem mudar com o tempo. Garanta que está baixando a distribuição do Docker do website oficial da empresa.
 
 ![alt text](./Images/image-1.png)
+
+- OBS: 
+   - Teste a inicialização do programa Docker Desktop e, caso ele não funcione ou tente iniciar um comando WSL em seu prompt, talvez seja necessária a instalação do WSL2 (Subsistema Linux para Windows) para o funcionamento da Docker Engine. Para isso, você pode executar os seguintes comandos no seu CMD:
+
+      ```bash
+      ##Ativação do WSL
+      dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+      ```
+
+      ```bash
+      ##Settando o WSL2 como default.
+      ##Confirme no prompt caso este peça alguma confirmação para a instalação.
+      wsl --set-default-version 2
+      ```
+      Você também pode buscar a instalação do WSL2 nos mecanismos de busca mais comuns, como o Google. Esta distribuição de Linux para o Windows é bastante utilizada por desenvolvedores e existem diversos tutoriais ensinando a sua instalação. **É importante observar que  os comandos fornecidos acima podem foram definidos no momento da publicação desta repo, os quais podem mudar à medida que ocorrem atualizações ou lançamento de novas versões para os sistemas operacionais. É sugerido que sempre se verifique os comandos descritos, de modo a confirmar que os mesmos funcionam para a sua versão de sistema operacional.**
+
 
 2.**Crie uma fork deste projeto para seu próprio ambiente Github.**
 
