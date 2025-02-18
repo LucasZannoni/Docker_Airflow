@@ -17,11 +17,9 @@ Este repositório é dedicado ao deploy simplificado de uma aplicação Apache A
 
 ## Propósito Deste Repositório
 
-Esta Repo tem como propósito facilitar o acesso para uso educacional à plataforma Apache Airflow. 
+Esta Repo tem como propósito facilitar o acesso para uso educacional à plataforma Apache Airflow.Este software é muito utilizado pela comunidade de dados devido à sua facilidade para automatizar a execução de scripts python e orquestrar pipelines de dados. 
 
-Este software é muito utilizado pela comunidade de dados devido à sua facilidade para automatizar a execução de scripts python e orquestrar pipelines de dados. 
-
-Uma dificuldade associada a esta ferramenta, porém, está relacionada ao seu setup inicial. Como se trata de uma ferramenta open-source e com a instalação baseada em sistemas linux, podem ocorrer diversos problemas durante a instalação e configuração dos serviços, cuja solução não é amigável ao usuário que não possui familiaridade com sistemas linux, comandos em bash, configurações básicas e conexão com bases de dados relacionais (SQLite, Postgres, MySQL, dentre outras).
+Uma dificuldade associada a esta ferramenta, porém, está relacionada ao seu setup inicial. Como se trata de uma ferramenta open-source e com a instalação baseada em sistemas linux, podem ocorrer diversos problemas durante a instalação e configuração dos serviços, cuja solução não é amigável ao usuário que não possui familiaridade com sistemas linux, comandos em bash e configurações básicas de conexão com bases de dados relacionais (SQLite, Postgres, MySQL, dentre outras).
 
 Neste sentido, o propósito desta Repo consiste em fornecer um acesso fácil à instalação desta ferramenta através do uso de containeres Docker. Com a conteinerização, o deploy desta aplicação é facilitado substancialmente, permitindo o uso e aprendizado por parte do usuário mais iniciante, que pode dedicar seu foco e energia iniciais no entendimento da própria ferramenta.
 
@@ -29,31 +27,29 @@ Neste sentido, o propósito desta Repo consiste em fornecer um acesso fácil à 
 
 ## Airflow - Introdução à Ferramenta
 
-A execução automatizada e orquestrada de tasks é essencial para garantir eficiência, escalabilidade e confiabilidade em processos de dados e workflows complexos. 
-
-Nesse contexto, o Apache Airflow se destaca como uma ferramenta poderosa para orquestração de workflows, oferecendo uma interface flexível para definir, monitorar e gerenciar pipelines de dados. Com suporte a dependências entre tasks, agendamento dinâmico e escalabilidade, o Airflow tem se tornado uma escolha popular entre usuários de dados para a orquestração de seus pipelines.
+A execução automatizada e orquestrada de tasks é essencial para garantir eficiência, escalabilidade e confiabilidade em processos de dados e workflows complexos. Nesse contexto, o Apache Airflow se destaca como uma ferramenta poderosa para orquestração de workflows, oferecendo uma interface flexível para definir, monitorar e gerenciar pipelines de dados. Com suporte a dependências entre tasks, agendamento dinâmico e escalabilidade, o Airflow tem se tornado uma escolha popular entre usuários de dados para a orquestração de seus pipelines.
 
 
 
 ## Docker - Contêineres
 
-O Docker Engine, por sua vez, se trata de uma ferramenta open source para a conteinerização de aplicações, podendo ser utilizado em várias áreas do TI, como frontend, backend, Infraestrutura e Dados.
+O Docker Engine, por sua vez, se trata de uma ferramenta open-source para a conteinerização de aplicações, podendo ser utilizado em diversas áreas do TI, como frontend, backend, infraestrutura e dados.
 
-Um conteiner consiste no empacotamento de uma aplicação e todas as suas dependências em uma unidade padrão para reprodução. Ele auxilia na hora de padronizar o deploy de aplicativos, uma vez que roda da mesma forma independente do sistema que seja realizado o deploy, permitindo que rodemos o nosso app de maneira leve, rápida e padronizada.
+Um conteiner consiste no empacotamento de uma aplicação e todas as suas dependências em uma unidade padrão para reprodução. Ele auxilia na hora de padronizar o deploy de aplicativos, uma vez que roda da mesma forma independentemente do sistema em que é realizado o deploy, permitindo que rodemos o nosso app de maneira leve, rápida e padronizada.
 
-Esta repo pode ser considerada um bom exemplo de conteiner, onde desejamos rodar as funcionalidades básicas do Apache Airflow (Scheduler e Webserver) de maneira rápida e fácil, sem maiores preocupações com setup.
+Esta repo pode ser considerada um bom exemplo de conteinerização, onde desejamos rodar as funcionalidades básicas do Apache Airflow (Scheduler e Webserver) de maneira rápida e fácil, sem maiores preocupações com setup.
 
 
 
 ## Conteúdo Deste Repositório
 
-Este repositório é composto por 3 pastas, sendo estas:
+Este repositório é composto por 4 pastas, sendo estas:
 
-1. **Database**: Imagem Docker e arquivos necessários para montagem da base de dados PostgresSQL necessária para o funcionamento do airflow.
+1. **Database**: Imagem Docker e arquivos necessários para montagem da base de dados PostgresSQL necessária para o funcionamento do Airflow.
 
-2. **Linux**: Imagem Docker e arquvios necessários para a montagem do ambiente linux e instalação de dependências necessárias para o funcionamento do airflow.
+2. **Linux**: Imagem Docker e arquvios necessários para a montagem do ambiente Linux e instalação de dependências necessárias para o funcionamento do Airflow.
 
-3. **Airflow Files**: Pastas locais para inserção de arquivos a serem utilizados pelo airflow. Nelas, foram pré-definidos os espaços para dags, bibliotecas de usuário e arquivos com credenciais. Seu funcionamento e uso será explicado posteriormente.
+3. **Airflow Files**: Pastas locais para inserção de arquivos a serem utilizados pelo Airflow. Nelas, foram pré-definidos os espaços para dags, bibliotecas de usuário e arquivos com credenciais. Seu funcionamento e uso será explicado posteriormente.
 
 4. **Images**: Pasta contendo as imagens utilizadas nesta repo. Ela não é necessária para a instalação do Apache Airflow.
 
@@ -116,15 +112,15 @@ Após a inicialização, é importante aguardar que a a docker engine inicie. No
 
 ![alt text](./Images/image-2.png)
 
-6.**Realize o Build da Aplicação**
+6.**Realize a Build da Aplicação**
 
-Para isso, será necessário inserir o seguinte comando no CMD.
+Para isso, será necessário inserir o seguinte comando no CMD:
 
    ```bash
    docker compose up
    ```
 
-Aguarde a instalação das dependências e montagem das ./Images/imagens (pode levar alguns minutos dependendo da capacidade de sua máquina) e pronto! Você já deve ter em mãos uma aplicação multiconteiner do airflow, rodando.
+Aguarde a instalação das dependências e montagem das imagens (isso pode levar alguns minutos dependendo da capacidade de sua máquina) e pronto! Você já deve ter em mãos uma aplicação multiconteiner do airflow rodando.
 
 7.**Teste sua Instalação**
 
@@ -137,8 +133,8 @@ Caso veja uma tela semelhante com a figura abaixo, parabéns! Sua instalação d
 ![alt text](./Images/image-3.png)
 
 - **Observações:**
-    - Esta build de Airflow está configurada para ser inicializada toda vez que a docker engine for desligada, caso não deseje isto, você pode executar o comando pause nos conteineres.
-    - Da mesma forma, caso os mesmos não religuem de maneira automática, podem ser iniciados da mesma forma.
+    - Esta build de Airflow está configurada para ser inicializada toda vez que a docker engine for ligada, caso não deseje isto, você pode executar o comando pause nos conteineres.
+    - Da mesma forma, caso os mesmos não religuem de maneira automática, podem ser iniciados com o mesmo método.
     - Uma dica para inicialização automática, seria configurar para que o programa Docker Desktop seja iniciado junto com o Windows. Isso fará com que seu Airflow também inicie automáticamente com a ativação de sua máquina.
 
 ![alt text](./Images/image-4.png)
@@ -147,13 +143,13 @@ Caso veja uma tela semelhante com a figura abaixo, parabéns! Sua instalação d
 
 ## Instalação - Linux
 
-Para a instalação no sistema operacional Windows, o usuário deve seguir os seguintes passos:
+Para a instalação no sistema operacional Linux, o usuário deve seguir os seguintes passos:
 
 1.**Realize o Download e Instalação da Docke Engine:**
 
 Para que possamos montar imagens Docker, precisamos executar alguns comandos no bash da máquina ubuntu:
 
-- OBS: Os comandos abaixo foram copiados da documentação oficial da Docker no momento, é recomendado que você verifique se os mesmos continuam válidos no momento de sua instalação. Isso pode ser feito consultando a [documentação oficial](https://docs.docker.com/engine/install/ubuntu/).
+- OBS: Os comandos abaixo foram copiados da documentação oficial da Docker no momento da escrita desta Repo. É recomendado que você verifique se os mesmos continuam válidos no momento de sua instalação. Isso pode ser feito consultando a [documentação oficial](https://docs.docker.com/engine/install/ubuntu/).
 
 Primeiramente, iremos adicionar o Docker à lista de pacotes do ubuntu:
 
@@ -218,13 +214,13 @@ Após abrir o CMD, você deve movê-lo para pasta correta com o seguinte command
 
 5.**Realize o Build da Aplicação**
 
-Para isso, será necessário inserir o seguinte comando no CMD.
+Para isso, será necessário inserir o seguinte comando no Bash:
 
    ```bash
    docker compose up
    ```
 
-Aguarde a instalação das dependências e montagem das ./Images/imagens (pode levar alguns minutos dependendo da capacidade de sua máquina) e pronto! Você já deve ter em mãos uma aplicação multiconteiner do airflow, rodando.
+Aguarde a instalação das dependências e montagem das imagens (isso pode levar alguns minutos dependendo da capacidade de sua máquina) e pronto! Você já deve ter em mãos uma aplicação multiconteiner do airflow rodando.
 
 6.**Teste sua Instalação**
 
@@ -278,13 +274,13 @@ Com este valor, insira abra o CMD e execute o seguinte comando:
       docker exec -it <insira_o_container_id_aqui> bash
    ```
 
-- OBS: Caso esteja utilizando uma instância Linux, será necessário inicializar seu container utilizando o comando:
+- OBS: Caso esteja utilizando uma instância Linux, será necessário inicializar seu container antes de rodar o comando acima, utilizando o comando:
 
    ```bash
       docker container start <insira_o_container_id_aqui> 
    ```
 
-Após isso, o texto à esquerda do seu comando deve mudar, indicando que você está agora no prompt de comando do sistema ubuntu dentro do container.
+Uma vez inicializado o container e rodado com comando "docker exec -it <insira_o_container_id_aqui> bash", o texto à esquerda do seu prompt de comando deve mudar, indicando que você está agora no prompt de comando do sistema ubuntu, dentro do container docker.
 
 Agora, execute o seguinte comando abaixo para criar seu usuário e senha:
 
