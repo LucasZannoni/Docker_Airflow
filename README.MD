@@ -1,6 +1,8 @@
 # Docker & Airflow
 
-Este repositório é dedicado ao deploy simplificado de uma aplicação Apache Airflow, utilizando a tecnologia de conteinerização Docker.
+Este repositório é dedicado ao deploy simplificado de uma aplicação Apache Airflow, utilizando a tecnologia de conteinerização Docker. Abaixo, segue um diagrama ilustrando o resultado esperado desta instalação:
+
+![alt text](Images/Airflow_Docker.png)
 
 ## Índice
 
