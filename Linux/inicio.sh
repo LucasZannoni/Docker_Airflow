@@ -1,3 +1,3 @@
 #!/bin/bash
 
-airflow scheduler & airflow webserver
+airflow scheduler & airflow api-server

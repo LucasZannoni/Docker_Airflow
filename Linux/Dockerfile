@@ -18,9 +18,12 @@ RUN apt update -y \
 
 RUN  python3 -m venv /home/ubuntu/airflow/venv
 ENV PATH="/home/ubuntu/airflow/venv/bin:$PATH"
+ENV AIRFLOW__CORE__AUTH_MANAGER="airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager"
 
-RUN pip install apache-airflow['postgresql']
+RUN pip install apache-airflow['postgresql']==3.0.2
+RUN pip install apache-airflow-providers-fab
 RUN pip install psycopg2
+RUN pip install asyncpg
 
 ##Define Airflow Home
 ENV AIRFLOW_HOME=/home/ubuntu/airflow
@@ -29,8 +32,9 @@ ENV AIRFLOW_HOME=/home/ubuntu/airflow
 RUN mkdir dags
 RUN mkdir libs
 RUN mkdir credentials
-RUN airflow db init
-RUN airflow users create -r Admin -u admin -e admin@example.com -f admin -l user -p test
+RUN airflow db migrate
+RUN airflow users create --username admin  --firstname Admin  --lastname Admin --role Admin --email admin@hotmail.com --password admin
+
 
 COPY airflow.cfg /home/ubuntu/airflow/airflow.cfg
 COPY startup.sh /home/ubuntu/airflow/startup.sh
@@ -41,6 +45,5 @@ RUN sed -i 's/\r//g' /home/ubuntu/airflow/startup.sh
 
 RUN chmod +x /home/ubuntu/airflow/startup.sh
 RUN chmod +x /home/ubuntu/airflow/restart.sh
-
 
 ENTRYPOINT ["bash", "-c", "/home/ubuntu/airflow/restart.sh & tail -f /dev/null"]
