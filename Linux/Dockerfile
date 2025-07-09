@@ -32,11 +32,8 @@ ENV AIRFLOW_HOME=/home/ubuntu/airflow
 RUN mkdir dags
 RUN mkdir libs
 RUN mkdir credentials
-RUN airflow db migrate
-RUN airflow users create --username admin  --firstname Admin  --lastname Admin --role Admin --email admin@hotmail.com --password admin
 
 
-COPY airflow.cfg /home/ubuntu/airflow/airflow.cfg
 COPY startup.sh /home/ubuntu/airflow/startup.sh
 COPY restart.sh /home/ubuntu/airflow/restart.sh
 
