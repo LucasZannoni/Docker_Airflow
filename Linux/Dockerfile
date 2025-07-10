@@ -18,10 +18,10 @@ RUN apt update -y \
 
 RUN  python3 -m venv /home/ubuntu/airflow/venv
 ENV PATH="/home/ubuntu/airflow/venv/bin:$PATH"
-ENV AIRFLOW__CORE__EXECUTOR = "LocalExecutor"
-ENV AIRFLOW__CORE__AUTH_MANAGER= "airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager"
-ENV AIRFLOW__DATABASE__SQL_ALCHEMY_CONN = "postgresql+psycopg2://postgres:postgres@db:5432/postgres"
-ENV AIRFLOW__CORE__LOAD_EXAMPLES = "False"
+ENV AIRFLOW__CORE__EXECUTOR=LocalExecutor
+ENV AIRFLOW__CORE__AUTH_MANAGER=airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager
+ENV AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres:postgres@db:5432/postgres
+ENV AIRFLOW__CORE__LOAD_EXAMPLES=False
 
 RUN pip install apache-airflow['postgresql']==3.0.2
 RUN pip install apache-airflow-providers-fab
